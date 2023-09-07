@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,14 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed = 10;
     [SerializeField] private float rotationSpeed = 0.1f;
     private float turnSmoothVelocity;
-    void Update()
-    {
-        Movement();
-    }
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
     }
+    void Update()
+    {
+        Movement();
+    }
+
     private void Movement()
     {
         float horizontal_X = Input.GetAxisRaw("Horizontal");

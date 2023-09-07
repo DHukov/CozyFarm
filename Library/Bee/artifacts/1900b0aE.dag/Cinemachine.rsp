@@ -122,6 +122,7 @@
 -define:CINEMACHINE_POST_PROCESSING_V2
 -define:CINEMACHINE_PHYSICS_2D
 -define:CINEMACHINE_PHYSICS
+-define:CINEMACHINE_UGUI
 -define:CINEMACHINE_UNITY_ANIMATION
 -define:CINEMACHINE_UNITY_IMGUI
 -define:CSHARP_7_OR_LATER
@@ -335,6 +336,8 @@
 -r:"E:/Unity/Unity Hub/2022.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 -r:"E:/Unity/Unity Hub/2022.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"E:/Unity/Unity Hub/2022.3.8f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"E:/Unity/Unity Hub/2022.3.8f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Library/PackageCache/com.unity.cinemachine@2.9.7/Runtime/AssemblyInfo.cs"
