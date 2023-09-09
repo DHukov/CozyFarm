@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class WaterPomp : MonoBehaviour, IInteractable
 {
+    public int count;
+
     public void Interact()
     {
-        Debug.Log("Interact");
+        count++;
+        Debug.Log("Interact" + count);
     }
   
 }
