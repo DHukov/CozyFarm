@@ -8,8 +8,8 @@ public enum ActiveButton
 }
 public class InteractPromptUI : MonoBehaviour
 {
-    [SerializeField] private Canvas _canvas;
-    [SerializeField] private TMP_Text _text;
+    private Canvas _canvas;
+    private TMP_Text _text;
 
     private void Start()
     {
