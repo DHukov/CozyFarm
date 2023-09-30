@@ -1,11 +1,5 @@
 using TMPro;
 using UnityEngine;
-
-public enum ActiveButton
-{
-    Realised,
-    Pressed
-}
 public class InteractPromptUI : MonoBehaviour
 {
     private Canvas _canvas;
@@ -20,19 +14,22 @@ public class InteractPromptUI : MonoBehaviour
         _text = GetComponentInChildren<TMP_Text>();
         _canvas.gameObject.SetActive(false);
     }
-    public void Displayed()
+    public bool Displayed()
     {
         _canvas.gameObject.SetActive(true);
+        return true;
     }
-    public void Closed()
+
+    public bool Closed()
     {
         _canvas.gameObject.SetActive(false);
+        return false;
     }
-    //Changer button color when realise or press button
-    public void UIButtonEffect(ActiveButton ab)
+    //Change button color when realise or press key
+    public void UIButtonState(ActiveButton activeButton)
     {
         Color32 color = _text.color;
-        switch (ab)
+        switch (activeButton)
         {
             case ActiveButton.Pressed:
                 color.a = 160;
@@ -50,4 +47,3 @@ public class InteractPromptUI : MonoBehaviour
         }
     }
 }
-
