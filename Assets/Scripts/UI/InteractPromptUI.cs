@@ -7,11 +7,9 @@ public class InteractPromptUI : MonoBehaviour
 
     private void Start()
     {
-        if (_canvas == null)
-            _canvas = GetComponentInChildren<Canvas>();
-        else
-            return;
+
         _text = GetComponentInChildren<TMP_Text>();
+        _canvas = GetComponentInChildren<Canvas>();
         _canvas.gameObject.SetActive(false);
     }
     public bool Displayed()

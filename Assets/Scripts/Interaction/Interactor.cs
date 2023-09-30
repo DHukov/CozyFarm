@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
-    private KeyCode _keyCode = SettingsMenu.interactKey; // The key code for interaction.
-    private static Interactor instance; // A static instance of the Interactor.
+    public static Interactor instance; // A static instance of the Interactor.
     private IInteractable _interactable; // The interactable object currently in focus.
     private InteractPromptUI _promptUI; // The UI prompt for interaction.
     public static bool PlayerInInteractField { get; private set; } // A flag indicating if the player is in the interaction field.
@@ -20,7 +19,6 @@ public class Interactor : MonoBehaviour
     {
         if (!PlayerInInteractField)
             return; // If the player is not in the interaction field, exit early.
-        PlayerInteractInput(_keyCode, PlayerInInteractField); // Handle player interaction input.
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +29,7 @@ public class Interactor : MonoBehaviour
 
     private void SetTypeFromTheObject(Collider collider)
     {
-        if ((collider.GetComponent<InteractPromptUI>() != null) && (collider.gameObject.GetComponent<IInteractable>() != null))
+        if (collider.GetComponent<InteractPromptUI>() != null && collider.gameObject.GetComponent<IInteractable>() != null)
         {
             // If the collider has both InteractPromptUI and IInteractable components, set them and display the UI prompt.
             _promptUI = collider.gameObject.GetComponent<InteractPromptUI>();
@@ -44,24 +42,20 @@ public class Interactor : MonoBehaviour
             return; // Log an error message if required components are not found and exit early.
         }
     }
-
-    // ToDo: Replace unput code to PlayerController
-
-    private void PlayerInteractInput(KeyCode keyCode, bool playerInInteractField)
+   
+    public void ButtonRealiseInteraction()
     {
-        if (Input.GetKeyDown(keyCode) && playerInInteractField)
+        if (_interactable != null)
+            _promptUI.UIButtonState(ActiveButton.Realised); // Handle the release of the interaction key.
+    }
+
+    public void ButtonPressInteraction()
+    {
+        if (_interactable != null)
         {
-            if (_interactable != null)
-            {
-                // If the interaction key is pressed and an interactable object exists, trigger the interaction.
-                _promptUI.UIButtonState(ActiveButton.Pressed);
-                _interactable.Interact();
-            }
-        }
-        if (Input.GetKeyUp(keyCode) || !playerInInteractField)
-        {
-            if (_interactable != null)
-                _promptUI.UIButtonState(ActiveButton.Realised); // Handle the release of the interaction key.
+            // If the interaction key is pressed and an interactable object exists, trigger the interaction.
+            _promptUI.UIButtonState(ActiveButton.Pressed);
+            _interactable.Interact();
         }
     }
 
