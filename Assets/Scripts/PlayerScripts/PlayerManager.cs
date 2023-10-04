@@ -3,10 +3,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private PlayerData playerData; 
+    [SerializeField] private PlayerData playerData;
     [SerializeField] private PlayerMovement playerMovement;
-    public List<ObjectData> playerInventory = new List<ObjectData>(); 
-    public static PlayerManager Instance; 
+    [SerializeField] private UserInterface userInterface;
+
+    // List to store the player's inventory
+    public List<ObjectData> playerInventory = new List<ObjectData>();
+
+    // Singleton instance of PlayerManager
+    public static PlayerManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -15,7 +20,6 @@ public class PlayerManager : MonoBehaviour
         {
             Instance = this;
             Debug.LogError("Player Data is not assigned in PlayerManager!");
-            return;
         }
         else
         {
@@ -33,25 +37,29 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        PlayerMovementInput(); 
-        PlayerInteractInput(SettingsMenu.interactKey, Interactor.PlayerInInteractField); // Handle player interaction input.
+        PlayerMovementInput();
+        Debug.Log(UserInterface.CurrentAction);
     }
 
-    void PlayerMovementInput()
+    private void PlayerMovementInput()
     {
         // Handle player movement based on input from arrow keys or WASD.
         float horizontal_X = Input.GetAxisRaw("Horizontal");
         float vertical_Z = Input.GetAxisRaw("Vertical");
-        var MovDirection = new Vector3(horizontal_X, 0, vertical_Z).normalized;
-        playerMovement.Movement(playerData.playerSpeed, playerData.playerRotationSpeed, MovDirection);
+        var moveDirection = new Vector3(horizontal_X, 0, vertical_Z).normalized;
+        playerMovement.Movement(playerData.playerSpeed, playerData.playerRotationSpeed, moveDirection);
     }
 
-    void PlayerInteractInput(KeyCode keyCode, bool playerInInteractField)
+    private void PlayerInteractInput(KeyCode keyCode)
     {
-        // Handle player interaction input, starting or ending an interaction.
-        if (Input.GetKeyDown(keyCode) && playerInInteractField)
-            Interactor.instance.ButtonPressInteraction(); 
-        if (Input.GetKeyUp(keyCode) || !playerInInteractField)
-            Interactor.instance.ButtonRealiseInteraction(); 
+        Interactor.instance.CanInteract();
+        userInterface.HandleInterfaceInput(keyCode);
+    }
+
+    void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.isKey && e.type == EventType.KeyUp)
+            PlayerInteractInput(e.keyCode);
     }
 }

@@ -1,50 +1,34 @@
 using UnityEngine;
 
-public class SettingsMenu : MonoBehaviour
+public class SettingsMenu : UserInterface, IUIController
 {
-    [SerializeField]
-    public static KeyCode interactKey
-    {
-        get { return KeyCode.E; }
-        private set { }
-    }
-    public static KeyCode settingsMenu
-    {
-        get { return KeyCode.E; }
-        private set { }
-    }
-    public static KeyCode storeOpen
-    {
-        get { return KeyCode.P; }
-        private set { }
-    }
+    public static SettingsMenu instance;
 
-    public bool Closed()
+    public new KeyCode LocalKey { get => ControllerMenuSettings.SettingsMenuKey; }
+
+    private void Start()
     {
         gameObject.SetActive(false);
-        return false;
+    }
+    public override void CloseUI(KeyCode keyCode)
+    {
+        gameObject.SetActive(false);
+        //gameObject.SetActive(true);
+        base.CloseUI(LocalKey);
 
     }
 
-    public bool Displayed()
+    public override void OpenUI(KeyCode keyCode)
     {
         gameObject.SetActive(true);
-        return true;
-
+        base.OpenUI(LocalKey);
     }
 
-    public void UIKeyBind(KeyCode buttonState)
+    private void Awake()
     {
-
-    }
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(instance);
     }
 }

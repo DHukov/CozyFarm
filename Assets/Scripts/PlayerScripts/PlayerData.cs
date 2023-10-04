@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player", menuName = "ScriptableObject Player")]
+[CreateAssetMenu(fileName = "New Player Object", menuName = "ScriptableObject Player")]
 public class PlayerData : ScriptableObject
 {
     public Vector3 playerPosition;

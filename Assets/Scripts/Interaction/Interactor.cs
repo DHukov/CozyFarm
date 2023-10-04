@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    [SerializeField] private LayerMask layerMask; // A LayerMask(s) for interactable objects
     public static Interactor instance; // A static instance of the Interactor.
     private IInteractable _interactable; // The interactable object currently in focus.
     private InteractPromptUI _promptUI; // The UI prompt for interaction.
+    private Collider interactObjectCollider;
     public static bool PlayerInInteractField { get; private set; } // A flag indicating if the player is in the interaction field.
 
     private void Awake()
@@ -15,19 +17,16 @@ public class Interactor : MonoBehaviour
             Destroy(gameObject); // Destroy this object if another instance already exists.
     }
 
-    private void Update()
-    {
-        if (!PlayerInInteractField)
-            return; // If the player is not in the interaction field, exit early.
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        PlayerInInteractField = true; // Set the player in the interaction field.
-        SetTypeFromTheObject(other); // Determine the type of object the player is interacting with.
+        if (other.gameObject.layer == ExtraMathFunction.IsPowerOfTwo(layerMask.value) && other != null)
+        {
+            interactObjectCollider = other;
+            PlayerInInteractField = true; // Set the player in the interaction field.
+            AnObjectAreInteractable(other); // Determine the type of object the player is interacting with.
+        }
     }
-
-    private void SetTypeFromTheObject(Collider collider)
+    private bool AnObjectAreInteractable(Collider collider)
     {
         if (collider.GetComponent<InteractPromptUI>() != null && collider.gameObject.GetComponent<IInteractable>() != null)
         {
@@ -35,28 +34,26 @@ public class Interactor : MonoBehaviour
             _promptUI = collider.gameObject.GetComponent<InteractPromptUI>();
             _interactable = collider.gameObject.GetComponent<IInteractable>();
             _promptUI.Displayed();
+            return true;
         }
         else
         {
             Debug.Log("Component InteractPromptUI or IInteractable not are instance of an object");
-            return; // Log an error message if required components are not found and exit early.
+            return false; // Log an error message if required components are not found and exit early.
         }
-    }
-   
-    public void ButtonRealiseInteraction()
-    {
-        if (_interactable != null)
-            _promptUI.UIButtonState(ActiveButton.Realised); // Handle the release of the interaction key.
     }
 
-    public void ButtonPressInteraction()
+    private bool AnObjectHaveInteractComponents()
     {
-        if (_interactable != null)
-        {
-            // If the interaction key is pressed and an interactable object exists, trigger the interaction.
-            _promptUI.UIButtonState(ActiveButton.Pressed);
+        if (interactObjectCollider != null)
+            return AnObjectAreInteractable(interactObjectCollider);
+        return false;
+    }
+
+    public void CanInteract()
+    {
+        if (AnObjectHaveInteractComponents() && PlayerInInteractField)
             _interactable.Interact();
-        }
     }
 
     private void OnTriggerExit(Collider other)

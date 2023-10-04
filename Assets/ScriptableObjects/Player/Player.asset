@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec504f0702fa844aada58d02bd37231, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  playerPosition: {x: 0, y: 0, z: 0}
   playerName: Dania
+  playerSpeed: 10
+  playerRotationSpeed: 0.1
   <playerMoney>k__BackingField: 0
