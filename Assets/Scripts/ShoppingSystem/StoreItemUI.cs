@@ -5,20 +5,32 @@ using UnityEngine.UI;
 public class StoreItemUI : MonoBehaviour
 {
     public ObjectData shopItem;
-    [SerializeField] private Image _image;
-    [SerializeField] private TMP_Text _description;
-    [SerializeField] private TMP_Text _itemName;
-    [SerializeField] private TMP_Text _cost;
+    [SerializeField] private Image image;
+    [SerializeField] private TMP_Text description;
+    [SerializeField] private TMP_Text itemName;
+    [SerializeField] private TMP_Text cost;
+    [SerializeField] private Button buildiButton;
+    [SerializeField] private GameObject purchasedInterface;
+
+
     private void Awake()
     {
         if (shopItem == null)
             return;
         else 
         {
-            _image.sprite = shopItem.image;
-            _description.text = shopItem.description;
-            _itemName.text = shopItem.objectName;
-            _cost.text = shopItem.ObjectCost.ToString();
+            image.sprite = shopItem.image;
+            description.text = shopItem.description;
+            itemName.text = shopItem.objectName;
+            cost.text = shopItem.ObjectCost.ToString();
         }
+    }
+
+    public void ItemWasPurchased()
+    {
+        cost.gameObject.SetActive(false);
+        buildiButton.gameObject.SetActive(true);
+        purchasedInterface.gameObject.SetActive(true);
+
     }
 }

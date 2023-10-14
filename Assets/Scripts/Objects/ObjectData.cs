@@ -7,6 +7,7 @@ public abstract class ObjectData : ScriptableObject
     public TypeObject typeObject;
     [SerializeField] public string description;
     public GameObject prefab;
+    public bool itemWasPurchased = false;
     [field: SerializeField] public int ObjectCost { get; private set; }
 
 }

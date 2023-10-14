@@ -17,5 +17,6 @@ MonoBehaviour:
   typeObject: 1
   description: Pumping Water
   prefab: {fileID: 4029123555357999794, guid: 049a55c773f4a74429312dcf063b47b9, type: 3}
+  itemWasPurchased: 1
   <ObjectCost>k__BackingField: 5
   specData: Specific Data

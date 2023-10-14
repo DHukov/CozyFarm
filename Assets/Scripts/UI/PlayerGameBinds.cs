@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 
-public class ControllerMenuSettings : MonoBehaviour
+public class PlayerGameBinds : MonoBehaviour
 {
     private UnityEvent ChangeKey;
     private KeyCode changeInputKey;

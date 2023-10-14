@@ -1,14 +1,11 @@
 using UnityEngine;
 
 
-public class BuildObject : BaseObject
+public class WaterPump : BaseObject
 {
     public BuildObjectData buildingObject;
     public float litersOfWater;
-    private void Awake()
-    {
 
-    }
     public override void Interact()
     {
         litersOfWater += Time.time;
