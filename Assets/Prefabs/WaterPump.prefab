@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2403958491977705421}
   - component: {fileID: 9058095202872355571}
   - component: {fileID: 1865944244417205657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14731,7 +14731,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1061
+  m_VersionIndex: 1067
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14853,7 +14853,7 @@ GameObject:
   - component: {fileID: 5265045507264326153}
   - component: {fileID: 8849133210595249934}
   - component: {fileID: 8314222457127727297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29570,7 +29570,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1061
+  m_VersionIndex: 1067
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -29689,7 +29689,7 @@ GameObject:
   - component: {fileID: 5369160632552584117}
   - component: {fileID: 4392624646189900508}
   - component: {fileID: 7002659535282238837}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29826,7 +29826,7 @@ GameObject:
   - component: {fileID: 8311163429694855278}
   - component: {fileID: 7325849924549303010}
   - component: {fileID: 8390362052885599645}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46403,7 +46403,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1806
+  m_VersionIndex: 1812
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -46525,7 +46525,7 @@ GameObject:
   - component: {fileID: 4555754307759350306}
   - component: {fileID: 585014908882996982}
   - component: {fileID: 4420370908991588560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61242,7 +61242,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1061
+  m_VersionIndex: 1067
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -61362,7 +61362,7 @@ GameObject:
   - component: {fileID: 3133457294621360449}
   - component: {fileID: 4588853194014256474}
   - component: {fileID: 153554318706215066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterPump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61435,6 +61435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingObject: {fileID: 11400000, guid: 19be7fa6fe60f6f4f8ad0b38cecc1fcb, type: 2}
+  litersOfWater: 0
 --- !u!1 &8295198836784652719
 GameObject:
   m_ObjectHideFlags: 0
@@ -61447,7 +61448,7 @@ GameObject:
   - component: {fileID: 1912654920568980067}
   - component: {fileID: 1971644725361936011}
   - component: {fileID: 3773404048423417807}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: InteractableObjectCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

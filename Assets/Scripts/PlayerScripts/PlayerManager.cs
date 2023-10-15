@@ -44,16 +44,16 @@ public class PlayerManager : MonoBehaviour
         playerMovement.Movement(playerData.playerSpeed, playerData.playerRotationSpeed, moveDirection);
     }
 
-    private void PlayerInteractInput(KeyCode keyCode)
+    private void PlayersInput(KeyCode keyCode)
     {
-        Interactor.instance.CanInteract(); // Trigger interactions using the Interactor.
-        WindowsController.Instance.InterfaceController(keyCode); // Handle UI interactions using the WindowsController.
+        Interactor.Instance.CanInteract(keyCode); // Trigger interactions using the Interactor.
+        WindowsController.Instance.WindowsKeyController(keyCode); // Handle UI interactions using the WindowsController.
     }
 
     void OnGUI()
     {
         Event e = Event.current;
         if (e.isKey && e.type == EventType.KeyUp)
-            PlayerInteractInput(e.keyCode); // Handle key events for player interactions.
+            PlayersInput(e.keyCode); // Handle key events for player interactions.
     }
 }

@@ -2,11 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public interface IUIController
+public interface IKeyBinded
+{
+    KeyCode LocalKey { get; } // Get the key to control this UI.
+
+}
+public interface IUIController : IKeyBinded
 {
     void OpenUI(); // Method to open the UI associated with this controller.
     void CloseUI(); // Method to close the UI associated with this controller.
-    KeyCode LocalKey { get; } // Get the key to control this UI.
 }
 
 public class WindowsController : MonoBehaviour
@@ -42,7 +46,7 @@ public class WindowsController : MonoBehaviour
         }
     }
 
-    public void InterfaceController(KeyCode key)
+    public void WindowsKeyController(KeyCode key)
     {
         foreach (var item in windowsDict)
         {

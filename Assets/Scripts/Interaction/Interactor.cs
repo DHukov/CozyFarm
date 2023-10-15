@@ -1,18 +1,20 @@
 using UnityEngine;
 
-public class Interactor : MonoBehaviour
+public class Interactor : MonoBehaviour, IKeyBinded
 {
     [SerializeField] private LayerMask layerMask; // A LayerMask(s) for interactable objects
-    public static Interactor instance; // A static instance of the Interactor.
-    private IInteractable _interactable; // The interactable object currently in focus.
-    private InteractPromptUI _promptUI; // The UI prompt for interaction.
-    private Collider interactObjectCollider;
+    public static Interactor Instance; // A static instance of the Interactor.
+    private IInteractable interactable; // The interactable object currently in focus.
+    private InteractPromptUI promptUI; // The UI prompt for interaction.
+    public static Collider currentInteractObject { get; private set; }
     public static bool PlayerInInteractField { get; private set; } // A flag indicating if the player is in the interaction field.
+
+    public KeyCode LocalKey => PlayerGameBinds.InteractKey;
 
     private void Awake()
     {
-        if (instance == null && gameObject.tag == "Player")
-            instance = this; // Set the static instance to Player object.
+        if (Instance == null && gameObject.tag == "Player")
+            Instance = this; // Set the static instance to Player object.
         else
             Destroy(gameObject); // Destroy this object if another instance already exists.
     }
@@ -21,19 +23,21 @@ public class Interactor : MonoBehaviour
     {
         if (other.gameObject.layer == ExtraMathFunction.IsPowerOfTwo(layerMask.value) && other != null)
         {
-            interactObjectCollider = other;
+            currentInteractObject = other;
             PlayerInInteractField = true; // Set the player in the interaction field.
             AnObjectAreInteractable(other); // Determine the type of object the player is interacting with.
         }
+        else
+            currentInteractObject = null;
     }
     private bool AnObjectAreInteractable(Collider collider)
     {
         if (collider.GetComponent<InteractPromptUI>() != null && collider.gameObject.GetComponent<IInteractable>() != null)
         {
             // If the collider has both InteractPromptUI and IInteractable components, set them and display the UI prompt.
-            _promptUI = collider.gameObject.GetComponent<InteractPromptUI>();
-            _interactable = collider.gameObject.GetComponent<IInteractable>();
-            _promptUI.Displayed();
+            promptUI = collider.gameObject.GetComponent<InteractPromptUI>();
+            interactable = collider.gameObject.GetComponent<IInteractable>();
+            promptUI.Displayed();
             return true;
         }
         else
@@ -45,23 +49,35 @@ public class Interactor : MonoBehaviour
 
     private bool AnObjectHaveInteractComponents()
     {
-        if (interactObjectCollider != null)
-            return AnObjectAreInteractable(interactObjectCollider);
+        if (currentInteractObject != null)
+            return AnObjectAreInteractable(currentInteractObject);
         return false;
     }
 
-    public void CanInteract()
+    public void CanInteract(KeyCode keyCode)
     {
-        if (AnObjectHaveInteractComponents() && PlayerInInteractField)
-            _interactable.Interact();
+        if (keyCode == LocalKey && PlayerInInteractField)
+        {
+            if (AnObjectHaveInteractComponents())
+                interactable.Interact();
+            else
+            {
+                if (promptUI != null)
+                    promptUI.Closed();
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         PlayerInInteractField = false; // Set the player out of the interaction field.
-        if (_promptUI != null)
-            _promptUI.Closed(); // Close the UI prompt if it exists.
-        _interactable = null;
-        _promptUI = null; // Reset references when the player exits the interaction field.
+        if (promptUI != null)
+        {
+            promptUI.Closed(); // Close the UI prompt if it exists.
+            promptUI = null; // Reset references when the player exits the interaction field.
+        }
+        interactable = null;
+        currentInteractObject = null;
+
     }
 }

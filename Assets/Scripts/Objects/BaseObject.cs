@@ -1,13 +1,5 @@
 using UnityEngine;
 
-public enum TypeObject
-{
-    Animals,
-    Buildings,
-    Plants,
-    Default
-}
-
 public abstract class BaseObject : MonoBehaviour, IInteractable
 {
     public static ObjectData objectData;

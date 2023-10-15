@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour, IUIController
 {
-    public static SettingsMenu instance;
+    public static SettingsMenu Instance;
 
     public KeyCode LocalKey { get => PlayerGameBinds.SettingsMenuKey; }
 
@@ -20,9 +20,9 @@ public class SettingsMenu : MonoBehaviour, IUIController
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
-            Destroy(instance);
+            Destroy(Instance);
     }
 }

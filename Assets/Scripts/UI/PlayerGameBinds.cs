@@ -14,6 +14,7 @@ public class PlayerGameBinds : MonoBehaviour
         //    Debug.Log(item);
     }
 
+
     public static KeyCode InteractKey
     {
         get { return KeyCode.E; }
@@ -39,4 +40,5 @@ public class PlayerGameBinds : MonoBehaviour
         get { return KeyCode.P; }
         private set { }
     }
+
 }
