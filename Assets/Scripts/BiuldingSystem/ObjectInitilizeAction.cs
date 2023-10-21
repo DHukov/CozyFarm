@@ -11,10 +11,7 @@ public class ObjectInitilizeAction : MonoBehaviour
     private IPlacement placement;
     [SerializeField] private List<Transform> buildingsPosition = new List<Transform>();
 
-    private void Awake()
-    {
 
-    }
     public void PlaceObject(ObjectData objectData)
     {
         foreach (var item in PlayerManager.playerInventory)

@@ -9,5 +9,7 @@ public class PlayerData : ScriptableObject
     public float playerRotationSpeed = 0.1f;
     [field: SerializeField] public int playerMoney { get; private set; }
 
-    public int SetAmountMoney(int money) => playerMoney += money;
+    //public int SetAmountMoney(int money) => playerMoney += money;
+    public int DecreaseMoney(int money) => playerMoney -= money;
+    public int IncreaseMoney(int money) => playerMoney += money;
 }

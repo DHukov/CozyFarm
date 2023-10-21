@@ -14,13 +14,9 @@ public class PlayerManager : MonoBehaviour
     {
         // Ensure there is only one instance of PlayerManager in the scene.
         if (Instance == null)
-        {
             Instance = this; // Set the static instance to this object.
-        }
         else
-        {
             Destroy(Instance); // Destroy this object if another instance already exists.
-        }
     }
 
     // Check if the player has enough money to afford a purchase.

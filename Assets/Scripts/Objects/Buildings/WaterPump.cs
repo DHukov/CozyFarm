@@ -9,7 +9,7 @@ public class WaterPump : BaseObject
     public override void Interact()
     {
         litersOfWater += Time.time;
-        Debug.Log(litersOfWater);
-
+        //Debug.Log(litersOfWater);
+        base.Interact();
     }
 }

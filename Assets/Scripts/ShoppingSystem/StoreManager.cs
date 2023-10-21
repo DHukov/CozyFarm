@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Store : MonoBehaviour, IUIController
+public class StoreManager : WindowBase, IWindow, IKeyBinded
 {
     [SerializeField] private List<GameObject> itemShopList = new List<GameObject>(); // List of shop items in the UI
     [SerializeField] private PlayerData playerData; // Reference to player data
-    public static Store Instance; // Static instance of the Store
+    public static StoreManager Instance; // Static instance of the Store
 
     public KeyCode LocalKey { get => PlayerGameBinds.StoreKey; } // Get the key to open the Store
 
@@ -27,7 +27,7 @@ public class Store : MonoBehaviour, IUIController
                 if (PlayerManager.Instance.CanAfford(farmObject.ObjectCost) && !item.GetComponent<StoreItemUI>().shopItem.itemWasPurchased)
                 {
                     PlayerManager.playerInventory.Add(farmObject); // Add the purchased item to the player's inventory
-                    playerData.SetAmountMoney(-farmObject.ObjectCost); // Deduct the cost from the player's money
+                    playerData.DecreaseMoney(farmObject.ObjectCost); // Deduct the cost from the player's money
 
                     if (farmObject == item.GetComponent<StoreItemUI>().shopItem)
                     {
@@ -45,19 +45,18 @@ public class Store : MonoBehaviour, IUIController
     // Method to handle selling an object
     public void SellObject(ObjectData farmObject)
     {
-        PlayerManager.playerInventory.Remove(farmObject); // Remove the sold item from the player's inventory
-        playerData.SetAmountMoney(farmObject.ObjectCost % 2); // Add half of the item's cost to the player's money
+      // To DO
     }
 
     // Method to close the Store UI
-    public void CloseUI()
+    public override void CloseUI(GameObject gameObject)
     {
-        gameObject.SetActive(false); // Deactivate the Store UI
+        base.CloseUI(gameObject);
     }
 
     // Method to open the Store UI
-    public void OpenUI()
+    public override void OpenUI(GameObject gameObject)
     {
-        gameObject.SetActive(true); // Activate the Store UI
+        base.OpenUI(this.gameObject);
     }
 }

@@ -1,21 +1,22 @@
 using UnityEngine;
 
-public class SettingsMenu : MonoBehaviour, IUIController
+public class SettingsMenu : WindowBase, IWindow, IKeyBinded
 {
     public static SettingsMenu Instance;
 
     public KeyCode LocalKey { get => PlayerGameBinds.SettingsMenuKey; }
 
-    public void CloseUI()
+    public override void CloseUI(GameObject gameObject)
     {
-        gameObject.SetActive(false);
+
         Time.timeScale = +1;
+        base.CloseUI(this.gameObject);
     }
 
-    public void OpenUI()
+    public override void OpenUI(GameObject gameObject)
     {
-        gameObject.SetActive(true);
         Time.timeScale = +0;
+        base.OpenUI(this.gameObject);   
     }
 
     private void Awake()
