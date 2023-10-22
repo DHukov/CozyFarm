@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 9220213730544293833}
   - component: {fileID: 4477745842182798874}
   - component: {fileID: 4422375556182341987}
+  - component: {fileID: 1812907272820844138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -263,8 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 9220213730544293833}
-  movementSpeed: 15
-  rotationSpeed: 0.1
 --- !u!143 &9220213730544293833
 CharacterController:
   m_ObjectHideFlags: 0
@@ -303,8 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54566c97a9abb1047a5557bae99f7111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: []
   playerData: {fileID: 11400000, guid: 00e14857ba3eaa4428c27c279e7eeaf4, type: 2}
+  playerMovement: {fileID: 1308428936028452498}
+  playerInputManager: {fileID: 1812907272820844138}
 --- !u!114 &4422375556182341987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +315,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faf21670d9de3704f9df67caacc35354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1812907272820844138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129733229880580055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55725df91d4be044aea7a30e6461db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5598348048344363677

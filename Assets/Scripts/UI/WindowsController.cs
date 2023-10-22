@@ -4,8 +4,12 @@ using UnityEngine;
 
 public interface IKeyBinded
 {
-    KeyCode LocalKey { get; } // Get the key to control this UI.
+    public KeyCode LocalKey { get; } // Get the key to control this UI.
+}
 
+public interface IInputable : IKeyBinded
+{
+    public void KeyInput(KeyCode keyCode);
 }
 public interface IWindow
 {
@@ -13,7 +17,7 @@ public interface IWindow
     void CloseUI(GameObject gameObject); // Method to close the UI associated with this controller.
 }
 
-public class WindowsController : MonoBehaviour
+public class WindowsController : MonoBehaviour, IInputable
 {
     public static WindowsController Instance; // Static instance of the WindowsController.
 
@@ -21,6 +25,8 @@ public class WindowsController : MonoBehaviour
 
     private List<IWindow> windowsList = new List<IWindow>(); // List of available UI controllers.
     private Dictionary<KeyCode, IWindow> windowsDict = new Dictionary<KeyCode, IWindow>(); // Dictionary to map keys to UI controllers.
+
+    public KeyCode LocalKey => throw new System.NotImplementedException();
 
     private void Awake()
     {
@@ -31,10 +37,10 @@ public class WindowsController : MonoBehaviour
     }
     private void Start()
     {
-        FindAndAddToDictionaryByWindow(); // Find and initialize UI controllers.
+        FindByIWindowAddToDictionary(); // Find and initialize UI controllers.
     }
 
-    private void FindAndAddToDictionaryByWindow()
+    private void FindByIWindowAddToDictionary()
     {
         var foundUIControllers = FindObjectsOfType<MonoBehaviour>().OfType<IWindow>(); // Find all objects implementing IUIController.
         windowsList.AddRange(foundUIControllers); // Add them to the windowsList.
@@ -46,11 +52,11 @@ public class WindowsController : MonoBehaviour
         }
     }
 
-    public void WindowsKeyController(KeyCode key)
+    public void KeyInput(KeyCode keyCode)
     {
         foreach (var item in windowsDict)
         {
-            if (item.Key == key)
+            if (item.Key == keyCode)
                 ToggleWindow(item.Value); // Toggle the specified UI using the key.
         }
     }
@@ -68,5 +74,4 @@ public class WindowsController : MonoBehaviour
             currentWindow.OpenUI(((MonoBehaviour)currentWindow).gameObject); // Open the selected UI.
         }
     }
-
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Interactor : MonoBehaviour, IKeyBinded
+public class Interactor : MonoBehaviour, IKeyBinded, IInputable
 {
     [SerializeField] private LayerMask layerMask; // A LayerMask(s) for interactable objects
     public static Interactor Instance; // A static instance of the Interactor.
@@ -54,7 +54,20 @@ public class Interactor : MonoBehaviour, IKeyBinded
         return false;
     }
 
-    public void CanInteract(KeyCode keyCode)
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerInInteractField = false; // Set the player out of the interaction field.
+        if (promptUI != null)
+        {
+            promptUI.Closed(); // Close the UI prompt if it exists.
+            promptUI = null; // Reset references when the player exits the interaction field.
+        }
+        interactable = null;
+        currentInteractObject = null;
+
+    }
+
+    public void KeyInput(KeyCode keyCode)
     {
         if (keyCode == LocalKey && PlayerInInteractField)
         {
@@ -68,16 +81,4 @@ public class Interactor : MonoBehaviour, IKeyBinded
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        PlayerInInteractField = false; // Set the player out of the interaction field.
-        if (promptUI != null)
-        {
-            promptUI.Closed(); // Close the UI prompt if it exists.
-            promptUI = null; // Reset references when the player exits the interaction field.
-        }
-        interactable = null;
-        currentInteractObject = null;
-
-    }
 }

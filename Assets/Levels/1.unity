@@ -1315,18 +1315,6 @@ Transform:
   - {fileID: 1533400017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &931545602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1308428936028452498, guid: 974294906ea41ef4f8a77f15761b868a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7838315953943411824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00623c9cd8d5b248968c5c707a85ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &931606748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8269712358712395107, guid: c784a3b862512cd46952d350da1b8e98,
@@ -3019,26 +3007,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4422375556182341987, guid: 974294906ea41ef4f8a77f15761b868a,
-        type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4477745842182798874, guid: 974294906ea41ef4f8a77f15761b868a,
-        type: 3}
-      propertyPath: userInterface
-      value: 
-      objectReference: {fileID: 744641045}
-    - target: {fileID: 4477745842182798874, guid: 974294906ea41ef4f8a77f15761b868a,
-        type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 931545602}
-    - target: {fileID: 4477745842182798874, guid: 974294906ea41ef4f8a77f15761b868a,
-        type: 3}
-      propertyPath: userInterfaceManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5129733229880580055, guid: 974294906ea41ef4f8a77f15761b868a,
         type: 3}
       propertyPath: m_Name
