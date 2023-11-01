@@ -42,13 +42,13 @@ public class WindowsController : MonoBehaviour, IInputable
 
     private void FindByIWindowAddToDictionary()
     {
-        var foundUIControllers = FindObjectsOfType<MonoBehaviour>().OfType<IWindow>(); // Find all objects implementing IUIController.
+        var foundUIControllers = FindObjectsOfType<WindowBase>().OfType<IWindow>(); // Find all objects implementing IUIController.
         windowsList.AddRange(foundUIControllers); // Add them to the windowsList.
 
         foreach (var currentUI in windowsList)
         {
-            windowsDict.Add(((MonoBehaviour)currentUI).GetComponent<IKeyBinded>().LocalKey, currentUI); // Map the key to the UI controller.
-            currentUI.CloseUI(((MonoBehaviour)currentUI).gameObject);
+            windowsDict.Add(((WindowBase)currentUI).GetComponent<IKeyBinded>().LocalKey, currentUI); // Map the key to the UI controller.
+            currentUI.CloseUI(((WindowBase)currentUI).gameObject);
         }
     }
 
@@ -64,14 +64,14 @@ public class WindowsController : MonoBehaviour, IInputable
     private void ToggleWindow(IWindow window)
     {
         if (currentWindow != null)
-            currentWindow.CloseUI(((MonoBehaviour)currentWindow).gameObject); // Close the currently open UI.
+            currentWindow.CloseUI(((WindowBase)currentWindow).gameObject); // Close the currently open UI.
 
         if (currentWindow == window)
             currentWindow = null; // If the same UI is clicked again, close it.
         else
         {
             currentWindow = window;
-            currentWindow.OpenUI(((MonoBehaviour)currentWindow).gameObject); // Open the selected UI.
+            currentWindow.OpenUI(((WindowBase)currentWindow).gameObject); // Open the selected UI.
         }
     }
 }

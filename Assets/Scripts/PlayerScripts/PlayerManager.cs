@@ -7,7 +7,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement; // Reference to the player's movement script.
     public static PlayerManager Instance; // Static instance of the PlayerManager.
     [SerializeField] private PlayerInputManager playerInputManager;
-    [SerializeField] static public List<ObjectData> playerInventory = new List<ObjectData>();
+    [SerializeField] readonly static public List<FarmObjectData> playerPurchasedObjects = new List<FarmObjectData>();
+
+    public FarmObjectData CurrentFarmObject
+    {
+        get { return playerPurchasedObjects[playerPurchasedObjects.Count - 1]; }
+    }
 
     private void Awake()
     {

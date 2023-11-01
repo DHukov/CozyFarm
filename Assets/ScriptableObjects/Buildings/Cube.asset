@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2b7feba76a1fd499115eeb041b3366, type: 3}
   m_Name: Cube
   m_EditorClassIdentifier: 
+  typeObject: 1
+  prefab: {fileID: 5884318666937710830, guid: c784a3b862512cd46952d350da1b8e98, type: 3}
   image: {fileID: 21300000, guid: ea9342249ca53ef46b2dd658ffd4ecd8, type: 3}
   objectName: Cube
-  typeObject: 1
   description: Just Cube
-  prefab: {fileID: 5884318666937710830, guid: c784a3b862512cd46952d350da1b8e98, type: 3}
   itemWasPurchased: 0
+  itemWasPlaced: 0
   <ObjectCost>k__BackingField: 0
   specData: Specific Data

@@ -1,19 +1,20 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StoreItemUI : MonoBehaviour
 {
-    public ObjectData shopItem;
+    [SerializeField] private FarmObjectData shopItem;
     [SerializeField] private Image image;
     [SerializeField] private TMP_Text description;
     [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text cost;
-    [SerializeField] private Button buildiButton;
+    [SerializeField] private Button buildButton;
     [SerializeField] private GameObject purchasedInterface;
 
 
-    private void Awake()
+    private void Start()
     {
         if (shopItem == null)
             return;
@@ -25,12 +26,24 @@ public class StoreItemUI : MonoBehaviour
             cost.text = shopItem.ObjectCost.ToString();
         }
     }
-
-    public void ItemWasPurchased()
+    public FarmObjectData GetFarmObjectData() => shopItem;
+    private void Update()
     {
-        cost.gameObject.SetActive(false);
-        buildiButton.gameObject.SetActive(true);
-        purchasedInterface.gameObject.SetActive(true);
-
+        if (shopItem == null)
+            return;
+        else
+        ItemWasPurchased(shopItem.ItemPurchased());
     }
+    public void ItemWasPurchased(bool ItemPurchased)
+    {
+        if (ItemPurchased)
+        {
+            cost.gameObject.SetActive(false);
+            buildButton.gameObject.SetActive(true);
+            purchasedInterface.gameObject.SetActive(true);
+
+        }
+    }
+
+
 }

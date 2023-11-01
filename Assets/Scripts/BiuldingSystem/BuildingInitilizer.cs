@@ -28,19 +28,19 @@ public class BuildingInitilizer : BaseObject, IPlacement
 
     public override void Interact()
     {
-        if (PlayerManager.playerInventory.Count == 0)
+        if (PlayerManager.playerPurchasedObjects.Count == 0)
         {
             Debug.Log("No purchased items");
         }
         else
         {
-            for (int i = 0; i < PlayerManager.playerInventory.Count; i++)
-                SetObjectPosition(PlayerManager.playerInventory[0], currentObject);
+            for (int i = 0; i < PlayerManager.playerPurchasedObjects.Count; i++)
+                SetObjectPosition(PlayerManager.playerPurchasedObjects[0], currentObject);
 
         }
     }
 
-    public void SetObjectPosition(ObjectData objectData, Vector3 vector3)
+    public void SetObjectPosition(FarmObjectData objectData, Vector3 vector3)
     {
         Destroy(gameObject);
         Debug.Log("Warning");

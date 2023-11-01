@@ -3,7 +3,7 @@ using UnityEngine;
 
 interface IPlacement
 {
-    public void SetObjectPosition(ObjectData objectData, Vector3 vector3);
+    public void SetObjectPosition(FarmObjectData objectData, Vector3 vector3);
 
 }
 public class ObjectInitilizeAction : MonoBehaviour
@@ -12,9 +12,9 @@ public class ObjectInitilizeAction : MonoBehaviour
     [SerializeField] private List<Transform> buildingsPosition = new List<Transform>();
 
 
-    public void PlaceObject(ObjectData objectData)
+    public void PlaceObject(FarmObjectData objectData)
     {
-        foreach (var item in PlayerManager.playerInventory)
+        foreach (var item in PlayerManager.playerPurchasedObjects)
         {
             if (objectData == item)
             {
@@ -37,7 +37,7 @@ public class ObjectInitilizeAction : MonoBehaviour
         }
     }
 
-    private void PlaceBuilding(ObjectData item)
+    private void PlaceBuilding(FarmObjectData item)
     {
         Debug.Log("Spawn");
     }
