@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public interface IKeyBinded
@@ -11,41 +10,22 @@ public interface IInputable : IKeyBinded
 {
     public void KeyInput(KeyCode keyCode);
 }
-public interface IWindow
-{
-    void OpenUI(GameObject gameObject); // Method to open the UI associated with this controller.
-    void CloseUI(GameObject gameObject); // Method to close the UI associated with this controller.
-}
 
 public class WindowsController : MonoBehaviour, IInputable
 {
-    public static WindowsController Instance; // Static instance of the WindowsController.
+    private Dictionary<KeyCode, IUIWindow> windowsDict = new Dictionary<KeyCode, IUIWindow>(); // Dictionary to map keys to UI controllers.
 
-    private IWindow currentWindow = null; // The currently open UI controller.
+    private IUIWindow currentWindow = null; // The currently open UI controller.
+    public KeyCode LocalKey { get; } // Get the key to control this UI.
 
-    private List<IWindow> windowsList = new List<IWindow>(); // List of available UI controllers.
-    private Dictionary<KeyCode, IWindow> windowsDict = new Dictionary<KeyCode, IWindow>(); // Dictionary to map keys to UI controllers.
-
-    public KeyCode LocalKey => throw new System.NotImplementedException();
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this; // Set the static instance to this object.
-        else
-            Destroy(Instance); // Destroy this object if another instance already exists.
-    }
     private void Start()
     {
-        FindByIWindowAddToDictionary(); // Find and initialize UI controllers.
+        AddToDictionary(); // Find and initialize UI controllers.
     }
 
-    private void FindByIWindowAddToDictionary()
+    private void AddToDictionary()
     {
-        var foundUIControllers = FindObjectsOfType<WindowBase>().OfType<IWindow>(); // Find all objects implementing IUIController.
-        windowsList.AddRange(foundUIControllers); // Add them to the windowsList.
-
-        foreach (var currentUI in windowsList)
+        foreach (var currentUI in WindowBase.windowsList)
         {
             windowsDict.Add(((WindowBase)currentUI).GetComponent<IKeyBinded>().LocalKey, currentUI); // Map the key to the UI controller.
             currentUI.CloseUI(((WindowBase)currentUI).gameObject);
@@ -61,7 +41,7 @@ public class WindowsController : MonoBehaviour, IInputable
         }
     }
 
-    private void ToggleWindow(IWindow window)
+    private void ToggleWindow(IUIWindow window)
     {
         if (currentWindow != null)
             currentWindow.CloseUI(((WindowBase)currentWindow).gameObject); // Close the currently open UI.

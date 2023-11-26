@@ -1,28 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData; // Reference to the player's data.
     [SerializeField] private PlayerMovement playerMovement; // Reference to the player's movement script.
-    public static PlayerManager Instance; // Static instance of the PlayerManager.
     [SerializeField] private PlayerInputManager playerInputManager;
-    [SerializeField] readonly static public List<FarmObjectData> playerPurchasedObjects = new List<FarmObjectData>();
-
-    public FarmObjectData CurrentFarmObject
-    {
-        get { return playerPurchasedObjects[playerPurchasedObjects.Count - 1]; }
-    }
 
     private void Awake()
     {
-        // Ensure there is only one instance of PlayerManager in the scene.
-        if (Instance == null)
-            Instance = this; // Set the static instance to this object.
-        else
-            Destroy(Instance); // Destroy this object if another instance already exists.
     }
-    public bool CanAfford(int cost) => playerData.playerMoney >= cost;
 
     private void Start()
     {

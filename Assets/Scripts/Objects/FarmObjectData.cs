@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class FarmObjectData : ScriptableObject
+public class FarmObjectData : ScriptableObject
 {
     public TypeObject typeObject;
     public GameObject prefab;

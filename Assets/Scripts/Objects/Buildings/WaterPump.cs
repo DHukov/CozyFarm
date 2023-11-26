@@ -1,7 +1,6 @@
 using UnityEngine;
 
-
-public class WaterPump : BaseObject
+public class WaterPump : Building// : BaseObject
 {
     public BuildObjectData buildingObject;
     public float litersOfWater;

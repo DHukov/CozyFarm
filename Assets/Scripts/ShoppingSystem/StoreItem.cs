@@ -1,9 +1,8 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreItemUI : MonoBehaviour
+public class StoreItem : MonoBehaviour
 {
     [SerializeField] private FarmObjectData shopItem;
     [SerializeField] private Image image;
@@ -13,12 +12,11 @@ public class StoreItemUI : MonoBehaviour
     [SerializeField] private Button buildButton;
     [SerializeField] private GameObject purchasedInterface;
 
-
     private void Start()
     {
         if (shopItem == null)
             return;
-        else 
+        else
         {
             image.sprite = shopItem.image;
             description.text = shopItem.description;
@@ -29,21 +27,18 @@ public class StoreItemUI : MonoBehaviour
     public FarmObjectData GetFarmObjectData() => shopItem;
     private void Update()
     {
-        if (shopItem == null)
-            return;
-        else
-        ItemWasPurchased(shopItem.ItemPurchased());
+       
     }
-    public void ItemWasPurchased(bool ItemPurchased)
+    private void OnEnable() => StoreManager.itemPurchased += ItemWasPurchased;
+    private void OnDisable() => StoreManager.itemPurchased -= ItemWasPurchased;
+    private void ItemWasPurchased(FarmObjectData purchasedItems)
     {
-        if (ItemPurchased)
+        if (shopItem == purchasedItems)
         {
+            Debug.LogError("Action");
             cost.gameObject.SetActive(false);
             buildButton.gameObject.SetActive(true);
             purchasedInterface.gameObject.SetActive(true);
-
         }
     }
-
-
 }

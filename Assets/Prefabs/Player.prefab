@@ -223,9 +223,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8740353386917227325}
-  - component: {fileID: 1308428936028452498}
   - component: {fileID: 9220213730544293833}
   - component: {fileID: 4477745842182798874}
+  - component: {fileID: 1308428936028452498}
   - component: {fileID: 4422375556182341987}
   - component: {fileID: 1812907272820844138}
   m_Layer: 0
@@ -251,19 +251,6 @@ Transform:
   - {fileID: 1060280945935335362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1308428936028452498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5129733229880580055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00623c9cd8d5b248968c5c707a85ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 9220213730544293833}
 --- !u!143 &9220213730544293833
 CharacterController:
   m_ObjectHideFlags: 0
@@ -305,6 +292,20 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 00e14857ba3eaa4428c27c279e7eeaf4, type: 2}
   playerMovement: {fileID: 1308428936028452498}
   playerInputManager: {fileID: 1812907272820844138}
+--- !u!114 &1308428936028452498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129733229880580055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00623c9cd8d5b248968c5c707a85ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 9220213730544293833}
+  playerInputManager: {fileID: 0}
 --- !u!114 &4422375556182341987
 MonoBehaviour:
   m_ObjectHideFlags: 0

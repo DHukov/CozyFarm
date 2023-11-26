@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1503358981409203963}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.37741852, y: -1.609333, z: 0}
+  m_LocalPosition: {x: 0.021, y: 1.387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14731,7 +14731,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1067
+  m_VersionIndex: 1073
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14869,7 +14869,7 @@ Transform:
   m_GameObject: {fileID: 1626045014739125129}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.031368453, w: 0.99950796}
-  m_LocalPosition: {x: 0.17200089, y: -0.2659998, z: 0}
+  m_LocalPosition: {x: -0.18441772, y: 2.730333, z: 0}
   m_LocalScale: {x: 0.11944054, y: 0.11944054, z: 0.11944054}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29570,7 +29570,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1067
+  m_VersionIndex: 1073
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -29842,7 +29842,7 @@ Transform:
   m_GameObject: {fileID: 2672185810435466565}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.48442832, w: 0.874831}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.3564186, y: 2.996333, z: 0}
   m_LocalScale: {x: 0.1349725, y: 0.49758434, z: 0.1349725}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46403,7 +46403,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1812
+  m_VersionIndex: 1818
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -46541,7 +46541,7 @@ Transform:
   m_GameObject: {fileID: 2940624563935339117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.58101326, w: 0.81389415}
-  m_LocalPosition: {x: 1.0489998, y: -0.849, z: 0}
+  m_LocalPosition: {x: 0.6925812, y: 2.147333, z: 0}
   m_LocalScale: {x: 0.29289, y: 0.29289, z: 0.29289}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61242,7 +61242,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1067
+  m_VersionIndex: 1073
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -61359,9 +61359,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6747736247913366518}
-  - component: {fileID: 3133457294621360449}
   - component: {fileID: 4588853194014256474}
   - component: {fileID: 153554318706215066}
+  - component: {fileID: 8631100828096224358}
   m_Layer: 8
   m_Name: WaterPump
   m_TagString: Untagged
@@ -61378,7 +61378,7 @@ Transform:
   m_GameObject: {fileID: 4029123555357999794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.53, y: 5.22, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61389,7 +61389,34 @@ Transform:
   - {fileID: 1704144780410154226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3133457294621360449
+--- !u!114 &4588853194014256474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029123555357999794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af126686d37489949a7919039f281a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1912654920568980067}
+--- !u!114 &153554318706215066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4029123555357999794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c03b8c370791c48b9dadc5d1fcc0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingObject: {fileID: 11400000, guid: 19be7fa6fe60f6f4f8ad0b38cecc1fcb, type: 2}
+  litersOfWater: 0
+--- !u!65 &8631100828096224358
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61408,34 +61435,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.092828, y: 3.477068, z: 1.7202493}
-  m_Center: {x: -0.1423744, y: -1.238534, z: -0.029420912}
---- !u!114 &4588853194014256474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029123555357999794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af126686d37489949a7919039f281a5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &153554318706215066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029123555357999794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c03b8c370791c48b9dadc5d1fcc0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingObject: {fileID: 11400000, guid: 19be7fa6fe60f6f4f8ad0b38cecc1fcb, type: 2}
-  litersOfWater: 0
+  m_Size: {x: 2.52, y: 2.7307518, z: 2}
+  m_Center: {x: 0, y: 1.3749889, z: 0}
 --- !u!1 &8295198836784652719
 GameObject:
   m_ObjectHideFlags: 0
@@ -61463,7 +61464,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8295198836784652719}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 1.15}
+  m_LocalPosition: {x: 0, y: 0, z: 1.19}
   m_LocalScale: {x: 0.031744003, y: 0.031744, z: 0.031744003}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61472,7 +61473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.98, y: 1.1275008}
+  m_AnchoredPosition: {x: -3.41, y: 3.91}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1912654920568980067
